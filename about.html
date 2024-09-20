@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxCLIP Competition</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="antialiased leading-normal tracking-normal text-gray-300">
+    <!-- background blobs -->
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+
+    <nav class="navbar animate__animated animate__fadeInDown">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a class="brand-text text-2xl font-bold text-white-custom flex items-center" href="/">
+                <img src="images/logo_transparent.png" alt="" class="h-10 mr-2"> MaxCLIP
+            </a>        
+            <div class="hidden lg:flex space-x-4">
+                <a class="navbar-link" href="index.html">Home</a>
+                <a class="navbar-link" href="competition.html">Competition</a>
+                <a class="navbar-link" href="leaderboard.html">Leaderboard</a>
+                <a class="navbar-link" href="participate.html">Participate</a>
+                <a class="navbar-link" href="about.html">About</a>
+                <a class="navbar-link" href="contact.html">Contact</a>
+            </div>
+            <button class="lg:hidden" id="navbarToggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="lg:hidden flex flex-col mt-4 space-y-2">
+            <a class="mobile-menu-item" href="index.html">Home</a>
+            <a class="mobile-menu-item" href="competition.html">Competition</a>
+            <a class="mobile-menu-item" href="leaderboard.html">Leaderboard</a>
+            <a class="mobile-menu-item" href="participate.html">Participate</a>
+            <a class="mobile-menu-item" href="about.html">About</a>
+            <a class="mobile-menu-item" href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-6 animate__animated animate__fadeInUp">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold mb-4 text-center text-black">About Us</h1>
+            <p class="text-lg mb-6 text-center text-black">We are dedicated to advancing the field of CLIP optimization. Our team is composed of experts and innovators who strive to push the boundaries of what's possible with theoretically-sound and empirically-tested algorithms.</p>
+    
+            <!-- team section -->
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2 text-black">Our Team</h2>
+                <p class="mb-4 text-black">We are a diverse group of researchers and practitioners with a shared passion for optimization and machine learning. Here are some of our key team members:</p>
+                <ul class="list-disc pl-5 mb-4 text-black">
+                    <li><strong>Dr. Tianbao Yang:</strong> Advisor and Originator of the MaxCLIP Competition</li>
+                    <li><strong>Ori Yonay:</strong> Site Maintenance and Evaluation Lead</li>
+                    <li><strong>Xiyuan Wei:</strong> Site Maintenance and Evaluation Lead</li>
+                </ul>
+            </section>
+            
+    
+            <!-- mission statement -->
+            <section>
+                <h2 class="text-2xl font-semibold mb-2 text-black">Our Mission</h2>
+                <p class="mb-4 text-black">Our mission is to create innovative solutions that drive the future of CLIP models. We aim to foster a collaborative environment that encourages groundbreaking research and development.</p>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer py-4 text-center animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="container mx-auto">
+            <p>MaxCLIP - Inspiring Innovation in CLIP Optimization | &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggle = document.getElementById('navbarToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            navbarToggle.addEventListener('click', function () {
+                mobileMenu.classList.toggle('show');
+            });
+        });
+    </script>    
+    
+</body>
+</html>

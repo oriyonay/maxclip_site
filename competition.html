@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxCLIP Competition</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="antialiased leading-normal tracking-normal text-gray-300">
+    <!-- background blobs -->
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+
+    <nav class="navbar animate__animated animate__fadeInDown">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a class="brand-text text-2xl font-bold text-white-custom flex items-center" href="/">
+                <img src="images/logo_transparent.png" alt="" class="h-10 mr-2"> MaxCLIP
+            </a>        
+            <div class="hidden lg:flex space-x-4">
+                <a class="navbar-link" href="index.html">Home</a>
+                <a class="navbar-link" href="competition.html">Competition</a>
+                <a class="navbar-link" href="leaderboard.html">Leaderboard</a>
+                <a class="navbar-link" href="participate.html">Participate</a>
+                <a class="navbar-link" href="about.html">About</a>
+                <a class="navbar-link" href="contact.html">Contact</a>
+            </div>
+            <button class="lg:hidden" id="navbarToggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="lg:hidden flex flex-col mt-4 space-y-2">
+            <a class="mobile-menu-item" href="index.html">Home</a>
+            <a class="mobile-menu-item" href="competition.html">Competition</a>
+            <a class="mobile-menu-item" href="leaderboard.html">Leaderboard</a>
+            <a class="mobile-menu-item" href="participate.html">Participate</a>
+            <a class="mobile-menu-item" href="about.html">About</a>
+            <a class="mobile-menu-item" href="contact.html">Contact</a>
+        </div>
+    </nav>
+    
+
+    <div class="container mx-auto px-4 py-6 animate__animated animate__fadeInUp">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold mb-4 text-center text-black">MaxCLIP Competition</h1>
+            <p class="text-lg mb-6 text-center text-black">Welcome to the MaxCLIP competition page! Here you can find all the details about our latest competition, including rules and deadlines.</p>
+    
+            <!-- rules and guidelines -->
+            <section id="rules-guidelines" class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2 text-black">Rules and Guidelines</h2>
+                <p class="mb-4 text-black">Below are the rules and guidelines for participating in the competition:</p>
+                <ul class="list-disc pl-5 mb-4 text-black">
+                    <li><strong>Eligibility:</strong> The competition is open to individuals and teams from all backgrounds, including university students, researchers, and industry professionals.</li>
+                    <li><strong>Leaderboards:</strong> 
+                        <ul class="list-disc pl-5 text-black">
+                            <li>Constrained leaderboard: our main leaderboard consisting of submissions that only make permitted modifications to the codebase (see Permitted Modifications below).</li>
+                            <li>Unconstrained leaderboard: a free-for-all leaderboard containing evaluations of any CLIP model trained in any fashion.</li>
+                            <li>The results of each submission will be published on a public leaderboard and will be updated weekly.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Prohibited Actions (Constrained Submission):</strong> 
+                        <ul class="list-disc pl-5 text-black">
+                            <li>Participants may not use any pre-trained models in their submission.</li>
+                            <li>Tampering with model architecture or any other fixed code (for a constrained submission).</li>
+                            <li>Tampering with or bypassing the competition's fixed evaluation or training procedure is strictly prohibited and will result in an automatic disqualification.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Disqualification:</strong> Any team found to be in violation of the rules will be disqualified from the competition.</li>
+                </ul>
+            </section>
+    
+            <!-- submission rules -->
+            <section id="submission-rules" class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2 text-black">Submission Rules</h2>
+                <ul class="list-disc pl-5 mb-4 text-black">
+                    <li>Each competitor is limited to one submission every two weeks.</li>
+                    <li>Submissions must include:
+                        <ul class="list-disc pl-5">
+                            <li>The modified code in the provided editable folder.</li>
+                            <li>A configuration file with hyperparameters.</li>
+                        </ul>
+                    </li>
+                    <li>Submissions must be a single ZIP file.</li>
+                    <li>(Constrained) submissions may not include any modifications to frozen components (e.g., dataset, model architecture, etc.) unless explicitly permitted.</li>
+                    <li>In case of a technical failure (e.g., bug), the competitor will be notified and allowed to submit a fix within 48 hours.</li>
+                </ul>
+            </section>
+    
+            <!-- dataset details -->
+            <section id="dataset" class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2 text-black">Dataset</h2>
+                <p class="mb-4 text-black">We will release small (1M), medium (10M), and large (100M) datasets which are randomly-chosen image/text pairs from DataComp. Since we wish to measure various methods' scaling laws with respect to dataset size, our small dataset is a subset of the medium dataset, which in turn is a subset of the large dataset.</p>
+            </section>
+    
+            <!-- scale specifications -->
+            <section id="scale" class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2 text-black">Scale</h2>
+                <table class="min-w-full bg-white mb-4 border text-black">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">Scale</th>
+                            <th class="py-2 px-4 border-b">Data Examples</th>
+                            <th class="py-2 px-4 border-b">Samples Seen</th>
+                            <th class="py-2 px-4 border-b">Model</th>
+                            <th class="py-2 px-4 border-b">Batch Size</th>
+                            <th class="py-2 px-4 border-b">GPUs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 px-4 border-b">Small</td>
+                            <td class="py-2 px-4 border-b">1 million</td>
+                            <td class="py-2 px-4 border-b" rowspan="3">1 billion</td>
+                            <td class="py-2 px-4 border-b" rowspan="3">ViT-B/32</td>
+                            <td class="py-2 px-4 border-b" rowspan="3">4096</td>
+                            <td class="py-2 px-4 border-b" rowspan="3">8x A100</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b">Medium</td>
+                            <td class="py-2 px-4 border-b">10 million</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b">Large</td>
+                            <td class="py-2 px-4 border-b">100 million</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+    
+            <!-- evaluation -->
+            <section id="evaluation" class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2 text-black">Evaluation</h2>
+                <p class="mb-4 text-black">We will use the publicly-available <a href="https://github.com/mlfoundations/datacomp" class="text-blue-500 hover:underline">DataComp</a> evaluation procedure to evaluate submissions. As evaluation metrics, we will publish the <strong>DataComp Average Score</strong> and <strong>ImageNet Zero-Shot Accuracy</strong> of each submission. Each submission will be evaluated using the same fixed test dataset and hardware environment. We will evaluate submissions as soon as we can and release leaderboard updates on a weekly basis.</p>
+            </section>
+    
+            <!-- permitted modifications -->
+            <section id="permitted-modifications" class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2 text-black">Permitted Modifications</h2>
+                <p class="mb-4 text-black">In the constrained track, the following modifications to the codebase are permitted:</p>
+                <ul class="list-disc pl-5 mb-4 text-black">
+                    <li><strong>Loss function</strong> or loss computation.</li>
+                    <li><strong>Parameter update</strong> (includes u and γ update for SogCLR).</li>
+                    <li><strong>Hyperparameters</strong> may be tuned by competitors and submitted along with their code in a custom config file.</li>
+                </ul>
+                <p class="text-black">A folder with code that competitors are allowed to edit will be provided; everything else (except a configuration file containing hyperparameters) is frozen.</p>
+            </section>
+            
+            <!-- frequently asked questions -->
+            <section>
+                <h2 class="text-2xl font-semibold mb-2 text-black">Frequently Asked Questions</h2>
+                <p class="mb-4 text-black">Here are some common questions and answers about the competition:</p>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-medium text-black cursor-pointer" onclick="toggleAnswer('answer1')">What is the competition about?</h3>
+                        <p id="answer1" class="text-black hidden">The competition aims to explore and optimize the performance of CLIP models on varying scales of datasets.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium text-black cursor-pointer" onclick="toggleAnswer('answer2')">How can I submit my work?</h3>
+                        <p id="answer2" class="text-black hidden">Submissions must be a single ZIP file including the modified code in the provided editable folder and a configuration file with hyperparameters.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium text-black cursor-pointer" onclick="toggleAnswer('answer3')">What datasets will be used?</h3>
+                        <p id="answer3" class="text-black hidden">We will use small (1M), medium (10M), and large (100M) datasets randomly chosen from DataComp.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <script>
+                function toggleAnswer(id) {
+                    const answer = document.getElementById(id);
+                    answer.classList.toggle('hidden');
+                }
+            </script>
+    
+        </div>
+    </div>
+
+    <footer class="footer py-4 text-center animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="container mx-auto">
+            <p>MaxCLIP - Inspiring Innovation in CLIP Optimization | &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggle = document.getElementById('navbarToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            navbarToggle.addEventListener('click', function () {
+                mobileMenu.classList.toggle('show');
+            });
+        });
+    </script>    
+    
+</body>
+</html>
