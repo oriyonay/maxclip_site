@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-6 animate__animated animate__fadeInUp">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold mb-4 text-center text-black">Leaderboard</h1>
+        <p class="text-lg mb-6 text-center text-black">
+            Below is the leaderboard for our competition, including our baseline <a href="https://arxiv.org/abs/2407.01445" class="text-blue-500 hover:underline">FastCLIP</a>.
+        </p>
+
+        <!-- Tabs for Constrained and Unconstrained -->
+        <center>
+            <div class="mb-4">
+                <button id="constrainedTab" class="px-4 py-2 bg-blue-500 text-white rounded" onclick="showTable('constrained')">Constrained</button>
+                <button id="unconstrainedTab" class="px-4 py-2 bg-gray-300 text-black rounded ml-2" onclick="showTable('unconstrained')">Unconstrained</button>
+            </div>
+        </center>
+
+        <!-- Constrained Table -->
+        <div id="constrainedTable" class="overflow-x-auto">
+            <table id="constrainedLeaderboardTable" class="display w-full text-left text-black">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>DataComp Average</th>
+                        <th>ImageNet Zero-Shot Accuracy</th>
+                        <th>Organization</th>
+                        <th>Submission Date</th>
+                        <th>Writeup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FastCLIP</td>
+                        <td>95.4</td>
+                        <td>87.6%</td>
+                        <td>Texas A&M OptMAI Lab</td>
+                        <td>2024-08-25</td>
+                        <td><a href="https://arxiv.org/abs/2407.01445" class="text-blue-500 hover:underline">FastCLIP</a></td>
+                    </tr>
+                    <tr>
+                        <td>SogCLR</td>
+                        <td>92.3</td>
+                        <td>85.2%</td>
+                        <td>Texas A&M OptMAI Lab</td>
+                        <td>2024-08-14</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>OpenCLIP</td>
+                        <td>89.7</td>
+                        <td>83.9%</td>
+                        <td>OpenCLIP People</td>
+                        <td>2024-08-13</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Unconstrained Table -->
+        <div id="unconstrainedTable" class="overflow-x-auto hidden">
+            <table id="unconstrainedLeaderboardTable" class="display w-full text-left text-black">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>DataComp Average</th>
+                        <th>ImageNet Zero-Shot Accuracy</th>
+                        <th>Organization</th>
+                        <th>Submission Date</th>
+                        <th>Writeup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- pretend data for unconstrained leaderboard -->
+                    <tr>
+                        <td>UltraCLIP</td>
+                        <td>97.2</td>
+                        <td>89.4%</td>
+                        <td>OpenAI Lab</td>
+                        <td>2024-09-01</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>DeepCLIP</td>
+                        <td>93.1</td>
+                        <td>86.5%</td>
+                        <td>DeepMind</td>
+                        <td>2024-08-30</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>FastCLIP</td>
+                        <td>95.4</td>
+                        <td>87.6%</td>
+                        <td>Texas A&M OptMAI Lab</td>
+                        <td>2024-08-25</td>
+                        <td><a href="https://arxiv.org/abs/2407.01445" class="text-blue-500 hover:underline">FastCLIP</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
+
+<script>
+    $(document).ready(function() {
+        // Initialize DataTables for both tables
+        $('#constrainedLeaderboardTable').DataTable();
+        $('#unconstrainedLeaderboardTable').DataTable();
+    });
+
+    function showTable(table) {
+        const constrainedTable = document.getElementById('constrainedTable');
+        const unconstrainedTable = document.getElementById('unconstrainedTable');
+        const constrainedTab = document.getElementById('constrainedTab');
+        const unconstrainedTab = document.getElementById('unconstrainedTab');
+
+        if (table === 'constrained') {
+            constrainedTable.classList.remove('hidden');
+            unconstrainedTable.classList.add('hidden');
+            constrainedTab.classList.add('bg-blue-500', 'text-white');
+            unconstrainedTab.classList.remove('bg-blue-500', 'text-white');
+            unconstrainedTab.classList.add('bg-gray-300', 'text-black');
+        } else {
+            constrainedTable.classList.add('hidden');
+            unconstrainedTable.classList.remove('hidden');
+            unconstrainedTab.classList.add('bg-blue-500', 'text-white');
+            constrainedTab.classList.remove('bg-blue-500', 'text-white');
+            constrainedTab.classList.add('bg-gray-300', 'text-black');
+        }
+    }
+</script>
+{% endblock %}
